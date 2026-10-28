@@ -1,0 +1,248 @@
+﻿Testing  (package-lock.json) ...
+
+Tested 109 dependencies for known issues, found 25 issues, 34 vulnerable paths.
+
+Open Security issues: 25
+
+ ✗ [LOW] Cross-site Scripting
+   Finding ID: SNYK-JS-SEND-7926862
+   Info: https://snyk.io/vuln/SNYK-JS-SEND-7926862
+   Introduced by: send
+   Introduced through: package.json@ > express@4.18.2 > send@0.18.0
+
+ ✗ [LOW] Cross-site Scripting (XSS)
+   Finding ID: SNYK-JS-SERIALIZEJAVASCRIPT-21663375
+   Info: https://snyk.io/vuln/SNYK-JS-SERIALIZEJAVASCRIPT-21663375
+   Introduced by: serialize-javascript
+   Introduced through: package.json@ > mocha@12.0.3 > serialize-javascript@7.1.2
+
+ ✗ [LOW] Cross-site Scripting (XSS)
+   Finding ID: SNYK-JS-SERIALIZEJAVASCRIPT-21689129
+   Info: https://snyk.io/vuln/SNYK-JS-SERIALIZEJAVASCRIPT-21689129
+   Introduced by: serialize-javascript
+   Introduced through: package.json@ > mocha@12.0.3 > serialize-javascript@7.1.2
+
+ ✗ [LOW] Cross-site Scripting
+   Finding ID: SNYK-JS-SERVESTATIC-7926865
+   Info: https://snyk.io/vuln/SNYK-JS-SERVESTATIC-7926865
+   Introduced by: serve-static
+   Introduced through: package.json@ > express@4.18.2 > serve-static@1.15.0
+
+ ✗ [MEDIUM] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-JS-BODYPARSER-17906397
+   Info: https://snyk.io/vuln/SNYK-JS-BODYPARSER-17906397
+   Introduced by: body-parser
+   Introduced through: package.json@ > express@4.18.2 > body-parser@1.20.1
+
+ ✗ [MEDIUM] Cross-site Scripting (XSS)
+   Finding ID: SNYK-JS-COOKIE-8163060
+   Info: https://snyk.io/vuln/SNYK-JS-COOKIE-8163060
+   Introduced by: cookie
+   Introduced through: package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > cookie@0.4.2
+
+ ✗ [MEDIUM] Open Redirect
+   Finding ID: SNYK-JS-EXPRESS-6474509
+   Info: https://snyk.io/vuln/SNYK-JS-EXPRESS-6474509
+   Introduced by: express
+   Introduced through: package.json@ > express@4.18.2
+
+ ✗ [MEDIUM] Cross-site Scripting
+   Finding ID: SNYK-JS-EXPRESS-7926867
+   Info: https://snyk.io/vuln/SNYK-JS-EXPRESS-7926867
+   Introduced by: express
+   Introduced through: package.json@ > express@4.18.2
+
+ ✗ [MEDIUM] Regular Expression Denial of Service (ReDoS)
+   Finding ID: SNYK-JS-PATHTOREGEXP-15789761
+   Info: https://snyk.io/vuln/SNYK-JS-PATHTOREGEXP-15789761
+   Introduced by: path-to-regexp
+   Introduced through: package.json@ > express@4.18.2 > path-to-regexp@0.1.7
+
+ ✗ [MEDIUM] Regular Expression Denial of Service (ReDoS)
+   Finding ID: SNYK-JS-PATHTOREGEXP-7925106
+   Info: https://snyk.io/vuln/SNYK-JS-PATHTOREGEXP-7925106
+   Introduced by: path-to-regexp
+   Introduced through: package.json@ > express@4.18.2 > path-to-regexp@0.1.7
+
+ ✗ [MEDIUM] Regular Expression Denial of Service (ReDoS)
+   Finding ID: SNYK-JS-PATHTOREGEXP-8482416
+   Info: https://snyk.io/vuln/SNYK-JS-PATHTOREGEXP-8482416
+   Introduced by: path-to-regexp
+   Introduced through: package.json@ > express@4.18.2 > path-to-regexp@0.1.7
+
+ ✗ [MEDIUM] Uncaught Exception
+   Finding ID: SNYK-JS-QS-19432019
+   Info: https://snyk.io/vuln/SNYK-JS-QS-19432019
+   Introduced by: qs
+   Introduced through: package.json@ > express@4.18.2 > qs@6.11.0
+
+ ✗ [MEDIUM] Use of Uninitialized Resource
+   Finding ID: SNYK-JS-WS-16722635
+   Info: https://snyk.io/vuln/SNYK-JS-WS-16722635
+   Introduced by: ws
+   Introduced through: package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0
+
+ ✗ [HIGH] Uncaught Exception
+   Finding ID: SNYK-JS-BODYPARSER-21431495
+   Info: https://snyk.io/vuln/SNYK-JS-BODYPARSER-21431495
+   Introduced by: body-parser
+   Introduced through: package.json@ > express@4.18.2 > body-parser@1.20.1
+
+ ✗ [HIGH] Asymmetric Resource Consumption (Amplification)
+   Finding ID: SNYK-JS-BODYPARSER-7926860
+   Info: https://snyk.io/vuln/SNYK-JS-BODYPARSER-7926860
+   Introduced by: body-parser
+   Introduced through: package.json@ > express@4.18.2 > body-parser@1.20.1
+
+ ✗ [HIGH] Improper Resource Shutdown or Release
+   Finding ID: SNYK-JS-ENGINEIO-17900543
+   Info: https://snyk.io/vuln/SNYK-JS-ENGINEIO-17900543
+   Introduced by: engine.io
+   Introduced through: package.json@ > socket.io@4.7.2 > engine.io@6.5.2
+
+ ✗ [HIGH] Prototype Pollution
+   Finding ID: SNYK-JS-ENGINEIO-17900560
+   Info: https://snyk.io/vuln/SNYK-JS-ENGINEIO-17900560
+   Introduced by: engine.io
+   Introduced through: package.json@ > socket.io@4.7.2 > engine.io@6.5.2
+
+ ✗ [HIGH] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-JS-QS-14724253
+   Info: https://snyk.io/vuln/SNYK-JS-QS-14724253
+   Introduced by: qs
+   Introduced through: package.json@ > express@4.18.2 > qs@6.11.0
+
+ ✗ [HIGH] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-JS-QS-15268416
+   Info: https://snyk.io/vuln/SNYK-JS-QS-15268416
+   Introduced by: qs
+   Introduced through: package.json@ > express@4.18.2 > qs@6.11.0
+
+ ✗ [HIGH] Uncaught Exception
+   Finding ID: SNYK-JS-QS-20943482
+   Info: https://snyk.io/vuln/SNYK-JS-QS-20943482
+   Introduced by: qs
+   Introduced through: package.json@ > express@4.18.2 > qs@6.11.0
+
+ ✗ [HIGH] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-JS-SOCKETIOPARSER-15680278
+   Info: https://snyk.io/vuln/SNYK-JS-SOCKETIOPARSER-15680278
+   Introduced by: socket.io-parser
+   Introduced through: package.json@ > socket.io@4.7.2 > socket.io-parser@4.2.4
+
+ ✗ [HIGH] Improper Check for Unusual or Exceptional Conditions
+   Finding ID: SNYK-JS-SOCKETIOPARSER-18517008
+   Info: https://snyk.io/vuln/SNYK-JS-SOCKETIOPARSER-18517008
+   Introduced by: socket.io-parser
+   Introduced through: package.json@ > socket.io@4.7.2 > socket.io-parser@4.2.4
+
+ ✗ [HIGH] Asymmetric Resource Consumption (Amplification)
+   Finding ID: SNYK-JS-WS-17344547
+   Info: https://snyk.io/vuln/SNYK-JS-WS-17344547
+   Introduced by: ws
+   Introduced through: package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0
+
+ ✗ [HIGH] Denial of Service (DoS)
+   Finding ID: SNYK-JS-WS-7266574
+   Info: https://snyk.io/vuln/SNYK-JS-WS-7266574
+   Introduced by: ws
+   Introduced through: package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0
+
+ ✗ [CRITICAL] User Impersonation
+   Finding ID: SNYK-JS-PROXYADDR-19812342
+   Info: https://snyk.io/vuln/SNYK-JS-PROXYADDR-19812342
+   Introduced by: proxy-addr
+   Introduced through: package.json@ > express@4.18.2 > proxy-addr@2.0.7
+
+Issues to fix by upgrading:
+
+  Upgrade express@4.18.2 to express@4.22.3 to fix
+  ✗ Cross-site Scripting [LOW] [https://security.snyk.io/vuln/SNYK-JS-SEND-7926862] in send@0.18.0
+    introduced by package.json@ > express@4.18.2 > send@0.18.0 and 1 other path
+  ✗ Cross-site Scripting [LOW] [https://security.snyk.io/vuln/SNYK-JS-SERVESTATIC-7926865] in serve-static@1.15.0
+    introduced by package.json@ > express@4.18.2 > serve-static@1.15.0
+  ✗ Allocation of Resources Without Limits or Throttling [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-BODYPARSER-17906397] in body-parser@1.20.1
+    introduced by package.json@ > express@4.18.2 > body-parser@1.20.1
+  ✗ Cross-site Scripting (XSS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-COOKIE-8163060] in cookie@0.4.2
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > cookie@0.4.2 and 1 other path
+  ✗ Open Redirect [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-EXPRESS-6474509] in express@4.18.2
+    introduced by package.json@ > express@4.18.2
+  ✗ Cross-site Scripting [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-EXPRESS-7926867] in express@4.18.2
+    introduced by package.json@ > express@4.18.2
+  ✗ Regular Expression Denial of Service (ReDoS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-PATHTOREGEXP-15789761] in path-to-regexp@0.1.7
+    introduced by package.json@ > express@4.18.2 > path-to-regexp@0.1.7
+  ✗ Regular Expression Denial of Service (ReDoS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-PATHTOREGEXP-7925106] in path-to-regexp@0.1.7
+    introduced by package.json@ > express@4.18.2 > path-to-regexp@0.1.7
+  ✗ Regular Expression Denial of Service (ReDoS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-PATHTOREGEXP-8482416] in path-to-regexp@0.1.7
+    introduced by package.json@ > express@4.18.2 > path-to-regexp@0.1.7
+  ✗ Uncaught Exception [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-QS-19432019] in qs@6.11.0
+    introduced by package.json@ > express@4.18.2 > qs@6.11.0 and 1 other path
+  ✗ Uncaught Exception [HIGH] [https://security.snyk.io/vuln/SNYK-JS-BODYPARSER-21431495] in body-parser@1.20.1
+    introduced by package.json@ > express@4.18.2 > body-parser@1.20.1
+  ✗ Asymmetric Resource Consumption (Amplification) [HIGH] [https://security.snyk.io/vuln/SNYK-JS-BODYPARSER-7926860] in body-parser@1.20.1
+    introduced by package.json@ > express@4.18.2 > body-parser@1.20.1
+  ✗ Allocation of Resources Without Limits or Throttling [HIGH] [https://security.snyk.io/vuln/SNYK-JS-QS-14724253] in qs@6.11.0
+    introduced by package.json@ > express@4.18.2 > qs@6.11.0 and 1 other path
+  ✗ Allocation of Resources Without Limits or Throttling [HIGH] [https://security.snyk.io/vuln/SNYK-JS-QS-15268416] in qs@6.11.0
+    introduced by package.json@ > express@4.18.2 > qs@6.11.0 and 1 other path
+  ✗ Uncaught Exception [HIGH] [https://security.snyk.io/vuln/SNYK-JS-QS-20943482] in qs@6.11.0
+    introduced by package.json@ > express@4.18.2 > qs@6.11.0 and 1 other path
+
+  Upgrade socket.io@4.7.2 to socket.io@4.8.0 to fix
+  ✗ Cross-site Scripting (XSS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-COOKIE-8163060] in cookie@0.4.2
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > cookie@0.4.2 and 1 other path
+  ✗ Use of Uninitialized Resource [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-WS-16722635] in ws@8.11.0
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0 and 1 other path
+  ✗ Improper Resource Shutdown or Release [HIGH] [https://security.snyk.io/vuln/SNYK-JS-ENGINEIO-17900543] in engine.io@6.5.2
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2
+  ✗ Prototype Pollution [HIGH] [https://security.snyk.io/vuln/SNYK-JS-ENGINEIO-17900560] in engine.io@6.5.2
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2
+  ✗ Asymmetric Resource Consumption (Amplification) [HIGH] [https://security.snyk.io/vuln/SNYK-JS-WS-17344547] in ws@8.11.0
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0 and 1 other path
+
+Issues with no direct upgrade or patch:
+  ✗ Cross-site Scripting (XSS) [LOW] [https://security.snyk.io/vuln/SNYK-JS-SERIALIZEJAVASCRIPT-21663375] in serialize-javascript@7.1.2
+    introduced by package.json@ > mocha@12.0.3 > serialize-javascript@7.1.2
+  This issue was fixed in: 7.1.3
+  ✗ Cross-site Scripting (XSS) [LOW] [https://security.snyk.io/vuln/SNYK-JS-SERIALIZEJAVASCRIPT-21689129] in serialize-javascript@7.1.2
+    introduced by package.json@ > mocha@12.0.3 > serialize-javascript@7.1.2
+  This issue was fixed in: 7.1.3
+  ✗ Use of Uninitialized Resource [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-WS-16722635] in ws@8.11.0
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0 and 1 other path
+  This issue was fixed in: 8.20.1
+  ✗ Allocation of Resources Without Limits or Throttling [HIGH] [https://security.snyk.io/vuln/SNYK-JS-SOCKETIOPARSER-15680278] in socket.io-parser@4.2.4
+    introduced by package.json@ > socket.io@4.7.2 > socket.io-parser@4.2.4
+  This issue was fixed in: 3.3.5, 3.4.4, 4.2.6
+  ✗ Improper Check for Unusual or Exceptional Conditions [HIGH] [https://security.snyk.io/vuln/SNYK-JS-SOCKETIOPARSER-18517008] in socket.io-parser@4.2.4
+    introduced by package.json@ > socket.io@4.7.2 > socket.io-parser@4.2.4
+  This issue was fixed in: 3.3.6, 3.4.5, 4.2.7
+  ✗ Asymmetric Resource Consumption (Amplification) [HIGH] [https://security.snyk.io/vuln/SNYK-JS-WS-17344547] in ws@8.11.0
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0 and 1 other path
+  This issue was fixed in: 5.2.5, 6.2.4, 7.5.11, 8.21.0
+  ✗ Denial of Service (DoS) [HIGH] [https://security.snyk.io/vuln/SNYK-JS-WS-7266574] in ws@8.11.0
+    introduced by package.json@ > socket.io@4.7.2 > engine.io@6.5.2 > ws@8.11.0 and 1 other path
+  This issue was fixed in: 5.2.4, 6.2.3, 7.5.10, 8.17.1
+  ✗ User Impersonation [CRITICAL] [https://security.snyk.io/vuln/SNYK-JS-PROXYADDR-19812342] in proxy-addr@2.0.7
+    introduced by package.json@ > express@4.18.2 > proxy-addr@2.0.7
+  This issue was fixed in: 2.0.8
+
+╭───────────────────────────────────────────────────────────────────────────────────────────╮
+│ Test Summary                                                                              │
+│                                                                                           │
+│   Organization:      davidma17-04                                                         │
+│   Test type:         Software Composition Analysis                                        │
+│   Project name:      package.json                                                         │
+│   Project path:      C:\Users\david\Documents\II semestre 2026\Paradigmas\Lab5\despues    │
+│   Target file:       package-lock.json                                                    │
+│                                                                                           │
+│   Total security issues: 25                                                               │
+│   Ignored: 0 [ 0 CRITICAL  0 HIGH  0 MEDIUM  0 LOW ]                                      │
+│   Open   : 25 [ 1 CRITICAL  11 HIGH  9 MEDIUM  4 LOW ]                                    │
+╰───────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+💡 Tip
+
+   To view ignored issues, use the --include-ignores option.
+                                                            
+
