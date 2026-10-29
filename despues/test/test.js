@@ -405,4 +405,59 @@ describe('unalib', function(){
 
   });
 
+  describe('identidad Auth0', function(){
+
+    var authHelpers = require('../libs/auth-config');
+    var auth = require('../libs/auth');
+
+    it('dado un token con name, cuando se obtiene el nombre visible, entonces se usa name', function(){
+      // Given
+      var claims = { name: 'Ana', nickname: 'ana_nick', sub: 'auth0|1' };
+
+      // When
+      var visible = authHelpers.displayNameFromClaims(claims);
+
+      // Then
+      assert.equal(visible, 'Ana');
+    });
+
+    it('dado un token sin name pero con nickname, cuando se obtiene el nombre visible, entonces se usa nickname', function(){
+      // Given
+      var claims = { nickname: 'bob_nick', sub: 'auth0|2' };
+
+      // When
+      var visible = authHelpers.displayNameFromClaims(claims);
+
+      // Then
+      assert.equal(visible, 'bob_nick');
+    });
+
+    it('dado un payload con nombre falsificado, cuando se aplica identidad verificada, entonces el nombre queda fijado', function(){
+      // Given
+      var entrada = JSON.stringify({ nombre: 'Evil', mensaje: 'hola', color: '#112233' });
+
+      // When
+      var salida = auth.applyVerifiedNombre(entrada, 'Ana');
+
+      // Then
+      var obj = JSON.parse(salida);
+      assert.equal(obj.nombre, 'Ana');
+    });
+
+    it('dado un token invalido con Host de socket, cuando se verifica JWT, entonces no falla por Host header', function(done){
+      process.env.NODE_ENV = 'production';
+      delete require.cache[require.resolve('../libs/auth')];
+      var authProd = require('../libs/auth');
+      var fake = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InRlc3QifQ.eyJzdWIiOiJ0In0.sig';
+      var incoming = { headers: { host: 'localhost:3000' }, url: '/socket.io/', method: 'GET' };
+      authProd.verifyAccessToken(fake, function (err) {
+        process.env.NODE_ENV = 'test';
+        assert.ok(err);
+        assert.match(String(err.message), /key|token|JWT/i);
+        done();
+      }, incoming);
+    });
+
+  });
+
 });

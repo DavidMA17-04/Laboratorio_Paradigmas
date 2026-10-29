@@ -15,5 +15,8 @@ node_modules/
 Thumbs.db
 desktop.ini
 
+# OpenSpec store local (despues)
+despues/.openspec-store/
+
 # Enunciado local
 Lab_5_Paradigmas_2026.pdf

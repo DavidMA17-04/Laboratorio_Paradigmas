@@ -1,27 +1,38 @@
 var request = require('supertest');
 var Client = require('socket.io-client');
-var serverMod = require('../../server');
-var app = serverMod.app;
-var http = serverMod.http;
-var io = serverMod.io;
+var testAuth = require('../helpers/test-auth');
 
-function mensajeChat(mensaje) {
+function mensajeChat(mensaje, nombreSpoof) {
   return JSON.stringify({
-    nombre: 'Ana',
+    nombre: nombreSpoof || 'Evil',
     mensaje: mensaje,
     color: '#112233'
   });
 }
 
 describe('chat integration', function () {
+  var serverMod;
+  var app;
+  var http;
+  var io;
   var listener;
   var port;
   var sockets = [];
 
   beforeAll(function (done) {
-    listener = http.listen(0, function () {
-      port = listener.address().port;
-      done();
+    process.env.NODE_ENV = 'test';
+    process.env.AUTH0_ISSUER_BASE_URL = 'https://test.una-chat.local/';
+    process.env.AUTH0_AUDIENCE = 'https://una-chat-api';
+    delete require.cache[require.resolve('../../server')];
+    testAuth.initTestAuthKeys().then(function () {
+      serverMod = require('../../server');
+      app = serverMod.app;
+      http = serverMod.http;
+      io = serverMod.io;
+      listener = http.listen(0, function () {
+        port = listener.address().port;
+        done();
+      });
     });
   });
 
@@ -36,28 +47,32 @@ describe('chat integration', function () {
     });
   });
 
-  function emitAndWait(payload) {
-    return new Promise(function (resolve, reject) {
-      var socket = Client('http://127.0.0.1:' + port, {
-        forceNew: true,
-        transports: ['websocket']
-      });
-      sockets.push(socket);
-      var timer = setTimeout(function () {
-        socket.close();
-        reject(new Error('timeout waiting for Evento-Mensaje-Server'));
-      }, 5000);
+  function emitAndWait(payload, tokenClaims) {
+    var token = testAuth.signTestToken(Object.assign({ name: 'Ana' }, tokenClaims || {}));
+    return Promise.resolve(token).then(function (token) {
+      return new Promise(function (resolve, reject) {
+        var socket = Client('http://127.0.0.1:' + port, {
+          forceNew: true,
+          transports: ['websocket'],
+          auth: { token: token }
+        });
+        sockets.push(socket);
+        var timer = setTimeout(function () {
+          socket.close();
+          reject(new Error('timeout waiting for Evento-Mensaje-Server'));
+        }, 5000);
 
-      socket.on('connect', function () {
-        socket.emit('Evento-Mensaje-Server', payload);
-      });
-      socket.on('Evento-Mensaje-Server', function (msg) {
-        clearTimeout(timer);
-        resolve(msg);
-      });
-      socket.on('connect_error', function (err) {
-        clearTimeout(timer);
-        reject(err);
+        socket.on('connect', function () {
+          socket.emit('Evento-Mensaje-Server', payload);
+        });
+        socket.on('Evento-Mensaje-Server', function (msg) {
+          clearTimeout(timer);
+          resolve(msg);
+        });
+        socket.on('connect_error', function (err) {
+          clearTimeout(timer);
+          reject(err);
+        });
       });
     });
   }
@@ -68,6 +83,36 @@ describe('chat integration', function () {
       .expect(200)
       .expect('Content-Type', /html/)
       .expect(/Chat Socket.IO UNA/);
+  });
+
+  test('GET Auth0 SPA SDK is served locally', function () {
+    return request(app)
+      .get('/vendor/auth0/auth0-spa-js.production.js')
+      .expect(200)
+      .expect('Content-Type', /javascript/)
+      .expect(/createAuth0Client/);
+  });
+
+  test('anonymous socket is rejected', function (done) {
+    var socket = Client('http://127.0.0.1:' + port, {
+      forceNew: true,
+      transports: ['websocket']
+    });
+    sockets.push(socket);
+    socket.on('connect', function () {
+      done.fail(new Error('expected connect_error'));
+    });
+    socket.on('connect_error', function () {
+      done();
+    });
+  });
+
+  test('verified name overrides spoofed nombre in payload', function () {
+    return emitAndWait(mensajeChat('hola', 'Evil')).then(function (raw) {
+      var salida = JSON.parse(raw);
+      expect(salida.nombre).toBe('Ana');
+      expect(salida.nombre).not.toBe('Evil');
+    });
   });
 
   test('valid image URL is accepted through the chat event', function () {

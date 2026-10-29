@@ -76,6 +76,12 @@ export default defineConfig({
     command: 'npm start',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
+    env: {
+      NODE_ENV: 'test',
+      AUTH0_ISSUER_BASE_URL: 'https://test.una-chat.local/',
+      AUTH0_AUDIENCE: 'https://una-chat-api',
+      PORT: '3000',
+    },
   },
 });
 

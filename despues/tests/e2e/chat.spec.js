@@ -10,8 +10,8 @@ async function sendMessage(page, text) {
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
-  await page.getByPlaceholder('Username').fill('David');
+  await page.goto('/?testAuth=1');
+  await expect(page.getByText('Conectado como David')).toBeVisible({ timeout: 15000 });
 });
 
 test('imagen termina de cargar', async ({ page }) => {
@@ -43,4 +43,11 @@ test('script no abre dialog', async ({ page }) => {
   await expect(item.locator('script')).toHaveCount(0);
   await expect(page.locator('#messages img')).toHaveCount(0);
   await expect(page.locator('#messages iframe')).toHaveCount(0);
+});
+
+test('guest cannot send without auth', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByText('No autenticado')).toBeVisible();
+  const send = page.getByRole('button', { name: 'Send' });
+  await expect(send).toBeDisabled();
 });
